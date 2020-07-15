@@ -25,7 +25,8 @@ namespace WishList
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
-            if(env.IsDevelopment())
+            app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -33,12 +34,6 @@ namespace WishList
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
         }
     }
 }
